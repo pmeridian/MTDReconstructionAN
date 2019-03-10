@@ -1,6 +1,7 @@
 \section{Simulation and Digitisation}
 
-\subsection{Detector Simulation}
+\subsection{Detector geometry}
+\label{sec:geosim}
 %editors: F. Cossutti & M. Casarsa & L. Gray
 
 %Event reconstruction studies and the study of some final state observables, such as particle identification, are based on a complete \GEANT simulation of the MTD detector. The sensitive detector simulation is recording the initial time and initial and final positions of energy deposited by crossing particles in LYSO and silicon volumes for BTL and ETL, respectively, integrating them in time intervals of 10 ps. 
@@ -140,7 +141,7 @@ The right panel of Fig.~\ref{fig:BTL_efficiency_pos} shows that hadrons suffer f
 \includegraphics[width=0.49\textwidth]{fig/performance/c_all_efficiency_vs_phi.pdf}
 %\includegraphics[width=0.48\linewidth]{fig/performance/c_all_efficiency_vs_eta.pdf}
 \includegraphics[width=0.49\linewidth]{fig/performance/c_all_efficiency_vs_pt.pdf}
-\caption{Per-track efficiency of finding an energy deposit larger than 3 MeV in the BTL and spatially associated to a single muon track. The left panel shows the efficiency as a function of the azimuthal track position at the BTL surface in a range corresponding to two trays. The right panel show the efficiency as a function of the \pt for single muon, single pion, and minimum bias tracks in blue, red, and black, respectively.}
+\caption{Per-track efficiency of finding an energy deposit larger than 3 MeV in the BTL and spatially associated to a single muon track. The left panel shows the efficiency as a function of the azimuthal track position at the BTL surface in a range corresponding to two trays. The right panel show the efficiency as a function of the $p_{T}$ for single muon, single pion, and minimum bias tracks in blue, red, and black, respectively.}
 \label{fig:BTL_efficiency_pos}
 \end{figure}
 
@@ -148,7 +149,7 @@ The right panel of Fig.~\ref{fig:BTL_efficiency_pos} shows that hadrons suffer f
 \subsection{ETL simulation}
 %editors: L. Gray & B. Tannenwald
 
-The ETL simulation follows the description of the geometry given in detail within the MTD Technical Proposal. Eleven overlapping concentric rings of silicon modules are used to develop a detector that is hermetic in $\phi$ for the fiducial region of $1.5 < |\eta| < 3.0$. The full simulation of the ETL layout described in Chapter~\ref{Chapter:ETL}, could not be implemented in time for this document. The timing performance is tuned to
+The ETL simulation follows the description of the geometry given in detail within the MTD Technical Proposal. Eleven overlapping concentric rings of silicon modules are used to develop a detector that is hermetic in $\phi$ for the fiducial region of $1.5 < |\eta| < 3.0$. The full simulation of the ETL layout could not be fully implemented in time for this document. The timing performance is tuned to
 % 15\% comes from 30\% in each endcap and then ETL is half the eta coverage of MTD.
 be the two-hit resolution of the ETL described in this document, which will lead to about 15\% of tracks in the fiducial area being covered by the MTD having better performance than the detector described previously in this text, which has a marginal positive impact on higher level physics results. Otherwise, the detectors are acceptance equivalent and so the TP geometry can be used to determine the efficacy of the ETL detector with a high degree of accuracy.
 
@@ -156,10 +157,21 @@ In terms of additional material in front of the CE, both the TP and TDR ETL desi
 
 %FIXME - Plots (in process).
 
-The per-pad occupancy of the ETL depends on the radial distance to the beam line, but is linear with a moderate slope until the last 5~cm of radius from the support cone. It ranges from 0.1\% at the largest radius to a maximum of 2\% at the smallest radius.
+The per-pad occupancy of the ETL depends on the radial distance to the beam line, but is linear with a moderate slope until the last 5~cm of radius from the support cone. It ranges from 1\% at the largest radius to a maximum of 4\% at the smallest radius and is reported in Fig.~\ref{fig:ETL_sim} (left).
 % as demonstrated in Figure~\ref{REPLACE}. NO FIGURE ON ECCUPANCY EXISTS IN THE TDR
 Simulated hits are digitized and recorded if their energy is larger than 0.1 MIP-equivalents at normal incidence. The timing resolution of the ETL is currently approximated by using the latest beam test results and the expected performance of the ETROC chip, including the statistical improvement from having two measurements on the track for most tracks. This performance is injected into the simulation of the ETL via a single Gaussian smearing of the crossing time of the accumulated energy at the 0.1~MIP threshold that is also used to trigger the recording of the data. 
 
+The acceptance of the ETL has been estimated from the simulation of single muon events and amounts to nearly 100\%. This efficiency is defined as the probability of finding a cluster of energy deposits with an energy larger than 0.1 MIP and spatially associated to a single muon track. 
+Fig.~\ref{fig:ETL_sim} (right) report the efficiency as a function of $p_{T}$ for track in the ETL acceptance to have an associated ETL energy deposit. Charged hadrons suffer from an inefficiency at the level of 5-15\%, mildly $p_{\text{T}}$-dependent, because of nuclear interactions in the tracker material upstream of the ETL.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=0.48\textwidth]{fig/performance/occupancy_recHit_eta_allHitsRings1to11_200PU_ETL_plusSide.png}
+%\includegraphics[width=0.48\linewidth]{fig/performance/c_all_efficiency_vs_eta.pdf}
+\includegraphics[width=0.48\linewidth]{fig/performance/h_3_track_pt_atETL_energyThresholdEff.png}
+\caption{Left: per-pad occupancy of the ETL as a function of the pseudo-rapidity for PU200 events. Right: the efficiency as a function of the $p_{T}$ to associate an MTD cluster within $\Delta R<0.05$ for single muon, single pion, and minimum bias tracks in blue, red, and black, respectively. A threshold of 0.1 MIP is used to compute the occupancy and the efficiency.}
+\label{fig:ETL_sim}
+\end{figure}
 
 
 %%%PM need to add here similar plot for ETL

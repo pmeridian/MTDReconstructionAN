@@ -11,7 +11,7 @@ Muons behave as MIP in the timing layer, and the most probable value of a Landau
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=0.49\textwidth]{fig/performance/c_all_Edep.pdf}
-\includegraphics[width=0.45\linewidth]{fig/performance/ETL_energyDeposition.png}
+\includegraphics[width=0.45\linewidth]{fig/performance/h_3_recHit_energy_dR05_withTrackETL.png}
 %\includegraphics[width=0.48\linewidth]{fig/performance/c_minBias_maxEnergy_vs_eta.pdf}
 \caption{Left: Distribution of the energy deposited in the BTL as predicted by the simulation for single muon (blue), single pion (red), and minimum bias events. 
 %The energy is reconstructed as the sum of all BTL hits within a cone of $\Delta R < 0.05$ around the track propagated to the BTL front surface. 
@@ -58,7 +58,7 @@ derived in situ. According to test beam results for particles at
 normal incidence (Section~2.1.1), the time measurement is independent
 of the track impact point along the crystal for $C_{L} = C_{R} = 0.5$.  
 These values are adopted in the current simulation and in the studies
-reported in this TDR.  
+reported in the TDR.  
 
 The expected average time resolution for clusters associated to
 tracks in minimum bias events is shown for BTL Fig.~\ref{fig:BTL_EdepVsEta_timeRes}-right 
@@ -122,9 +122,9 @@ In the first step of the MTD track reconstruction, a simple topological clusteri
 %In particular, multiple hits can be associated to a single track which impacts BTL at a shallow angle, either at p$_{T}$ below 2\mathrm{GeV} or at higher pseudo-rapidity values (above $|\eta|>0.8$). 
 Hits are required to be compatible in time, as this shows to mildly improve the resolution of the cluster parameters at high pile-up. The baricenter, weighted by the single hit energy, is used as an estimate of the cluster position and time. 
 
-Comparison of the BTL cluster size and reconstructed time 
+Comparison of the cluster size and reconstructed time 
 %and the cluster reconstructed position 
-is shown in Figure \ref{fig:clusterMuPuComp} for single muon simulated events with an average of 200 pile-up events and without pile-up.
+is shown in Figure \ref{fig:clusterMuPuComp_BTL} and \ref{fig:clusterMuPuComp_ETL} for single muon simulated events with an average of 200 pile-up events and without pile-up for BTL and ETL respectively.
 
 \begin{figure}[!h]
 \centering
@@ -133,7 +133,31 @@ is shown in Figure \ref{fig:clusterMuPuComp} for single muon simulated events wi
 %\includegraphics[width=0.32\textwidth]{fig/performance/ClusterAndTracks/BTLbestCluster_DR_muPUcomp.pdf}
 \caption{Comparison of the BTL clusters size (left) and reconstructed time (right)
 %and $\Delta R$ between the track propagated at the MTD and the cluster position
-for single muon events (flat $p_{T}$ spectrum in 0.7-10~\mathrm{GeV} range) with an average of 200 pile-up events(red dotted line) and without pile-up (black line).}
-\label{fig:clusterMuPuComp}
+for single muon events (flat $p_{T}$ spectrum in 0.7-10~GeV range) with an average of 200 pile-up events(red dotted line) and without pile-up (black line).}
+\label{fig:clusterMuPuComp_BTL}
 \end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.48\textwidth]{fig/performance/ClusterAndTracks/ETLbestCluster_size_muPUcomp.pdf}
+\includegraphics[width=0.48\textwidth]{fig/performance/ClusterAndTracks/ETLbestCluster_time_muPUcomp.pdf}
+%\includegraphics[width=0.32\textwidth]{fig/performance/ClusterAndTracks/BTLbestCluster_DR_muPUcomp.pdf}
+\caption{Comparison of the ETL clusters size (left) and reconstructed time (right)
+%and $\Delta R$ between the track propagated at the MTD and the cluster position
+for single muon events (flat $p_{T}$ spectrum in 0.7-10~GeV range) with an average of 200 pile-up events(red dotted line) and without pile-up (black line).}
+\label{fig:clusterMuPuComp_ETL}
+\end{figure}
+
+The $\Delta R$ of the best matching cluster in BTL and ETL is shown in Fig.~\ref{fig:clusterMuPuComp_DeltaR} for single muon events with PU200 and without pile-up.
+The $\Delta R$ matching precision in the BTL is dominated by the uncertainty in the longitudinal direction of the LYSO bar. The possibility to measure the position along the longitudinal direction of the bar from the difference of the two time readings at the opposite ends of the bar is not yet exploited to compute the cluster position, but it will bring a significant improvement to the matching precision (the impact point longitudinal position resolution on a single bar is estimated to be below 5mm). 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.48\textwidth]{fig/performance/ClusterAndTracks/BTLbestCluster_DR_muPUcomp.pdf}
+\includegraphics[width=0.48\textwidth]{fig/performance/ClusterAndTracks/ETLbestCluster_DR_muPUcomp.pdf}
+%\includegraphics[width=0.32\textwidth]{fig/performance/ClusterAndTracks/BTLbestCluster_DR_muPUcomp.pdf}
+\caption{$\Delta R$ for the best matching cluster for BTL (left) and ETL (right). Single muons with flat $p_{T}$ spectrum in 0.7-10~GeV range are used,  with an average of 200 pile-up events(red dotted line) and without pile-up (black line).}
+\label{fig:clusterMuPuComp_DeltaR}
+\end{figure}
+
 

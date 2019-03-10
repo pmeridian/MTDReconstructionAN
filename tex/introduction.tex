@@ -1,6 +1,13 @@
 \section{Introduction}
-This analysis note describe the first implementation in full simulation of the MIP Timing detector (MTD) simulation and reconstruction.
+This analysis note describes the first implementation in full simulation of the MIP Timing detector (MTD) simulation and reconstruction.
 
-The note starts describing the simulation geometry in~\ref{sec:sim} as implemented for the MTD Technical Design Report. The simulation of the readout electronics, based on design available during the TDR, is described in section~\ref{sec:digi}.
+The note starts describing the simulation geometry in~\ref{sec:geosim} as implemented for the MTD Technical Design Report. The simulation of the readout electronics, based on design available during the TDR, is described in section~\ref{sec:btlsim}.
 
-Few key performance aspects are then described in~\ref{sec:acceptance}. Energy deposition, efficiency and occupancy for the 2 compartments of the detector, the Barrel Timing Layer (BTL) and the Endcap Timing Layer (ETL) are discussed in detail for single gun events and minimum bias events.
+Few key performance aspects are then described in~\ref{C5Sec:mtdreco}. Energy deposition, efficiency and occupancy for the 2 compartments of the detector, the Barrel Timing Layer (BTL) and the Endcap Timing Layer (ETL) are discussed in detail for single gun events and minimum bias events. Clustering of MTD hits is also discussed and its performance evaluated in PU200 events.
+
+Reconstruction of time for tracks and neutral particles is later discussed in sections~\ref{sec:trackreco} and ~\ref{sec:neureco}, showing the performance for PU0 and PU200 events. The next step in the 4D reconstruction is the vertex position and time reconstruction, which is performed iteratively in order to assign the correct mass hypothesis to low $p_{T}$ tracks, which otherwise may lead to a bias of the reconstructed vertex time and worsening of the resolution. 
+
+Finally the performance of the time reconstruction are evaluated for 2 particular applications: time-of-flight particle identification in Heavy Ion events in section~\ref{sec:pid} and rejection of pile-up tracks in PU200 interactions~\ref{sec:purej}.
+
+
+
