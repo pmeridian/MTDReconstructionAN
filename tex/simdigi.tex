@@ -47,50 +47,41 @@ In both designs the total additional material from the ETL is less than 0.2 $X_0
 \subsection{BTL simulation}
 \label{sec:btlsim}
 
-The task of the BTL simulation is to convert the energy deposits and
-the respective arrival times in a crystal into time and energy
-measurements that incorporate the response of the detector
-and of the readout chain. 
+The task of the BTL simulation is to convert the energy deposits and the 
+respective arrival times in a crystal into time and energy measurements 
+that incorporate the response of the detector and of the readout chain. 
 The total amount of energy deposited in each crystal is estimated via
-\GEANT simulation by adding all the energy deposits accumulated in the
-crystal within an interval of 25~ns from the bunch crossing. 
-The signal amplitudes from the SiPMs at the two ends of the crystal
-bar are proportional to the deposited energy through the light yield
-(LY) of the crystals and the photon detection efficiency of the SiPMs
-(PDE), with a signal sharing depending on the longitudinal position of
-the energy position within the crystal bar. 
+GEANT simulation by adding all the energy deposits $E_{SIM}^{\,i}$ 
+accumulated in the crystal within an interval of 25~ns from the bunch crossing. 
+The signal amplitudes from the SiPMs at the two ends of the crystal bar,
+$N_{\rm p.e.}^{L,\,R}$, which are conventionally labeled as ``left'' and
+``right'', are proportional to the deposited energy through the light yield
+({\it LY}) of the crystals, the light collection efficiency ($\epsilon_{LC}$),
+and the photon detection efficiency of the SiPMs ({\it PDE}), with a signal
+sharing depending on the longitudinal position of the energy position 
+within the crystal bar:
+\begin{equation}
+N_{\rm p.e.}^{L,\,R} = LY\, \epsilon_{LC}\, PDE\, \sum_{i}^{\rm crystal} E_{SIM}^{\,i} \ .
+\end{equation}
 Table~\ref{tab:sim_parameters} lists the default values for these
-parameters, tuned on test beam and laboratory measurements discussed
-in Section~\ref{sec:design:BTL:TB_results}.   
-The numbers of photoelectrons read out by the ``left'' and ``right'' SiPM are
-independently fluctuated according to a Poisson distribution. 
+parameters, tuned on test beam and laboratory measurements. 
+%discussed in Section~\ref{sec:design:BTL:TB_results}.   
+The numbers of photoelectrons read out by the left and right SiPM, 
+are independently fluctuated according to a Poisson distribution. 
 
-The simulation of the detected time of arrival (TOA) at a given BTL
-cell includes different effects: the time of arrival of the first
-energy deposit in the cell, a time latency for the scintillation light
-to reach to SiPM at the crystal ends, and a time-walk effect depending
-on the signal amplitude and the signal discrimination threshold of the
-readout electronics. The time latencies from the hit position in the
-crystal to the left and right SiPMs are parameterized using
-test-beam data, which indicate an average light propagation velocity
-of about 8.5~ps/mm in the LYSO bars.  
-%
-The ability of the BTL readout chip (TOFHIR) to provide two time
-measurements per readout channel, either both on the leading edge or
-on the leading and trailing edges of the signal, is implemented in the
-simulation via a set of configurable parameters. The default
-configuration uses the lowest leading edge threshold to digitize the
-time of arrival, and a time-walk correction using the amplitude
-measurement. 
-% 
-
-A reference pulse shape of the TOFHIR signal at the input of the
-discriminator is used to
-calculate the time-walk delay. The pulse shape is based on a detailed
-simulation of the TOFHIR chip based on the CADENCE software.  The pulse
-amplitude is normalized to the number of photoelectrons 
-and the measured time is set by the time when the pulse crosses a
-configurable threshold. 
+The simulation of the detected time of arrival (TOA) at a given BTL cell, 
+$T^{L,\,R}$, includes different effects: 
+\begin{equation}
+T^{L,\,R} = T_{SIM}^{first} + t^{L,\,R}_{LC} + t^{TW}(N_{\rm p.e.}^{L,\,R},n^{thr})\ .
+\end{equation}
+$T_{SIM}^{first}$ is the time of arrival of the first energy deposit in the cell, 
+$t^{L,\,R}_{LC}$ is a time latency for the scintillation light to reach to SiPM at
+the crystal ends, and $t^{TW}$ is a time-walk effect depending on the signal 
+amplitude ($N_{\rm p.e.}^{L,\,R}$) and the signal discrimination threshold 
+of the readout electronics ($n^{thr}$). 
+The time latencies from the hit position in the crystal to the left and right 
+SiPMs are parameterized using test-beam data, which indicate an average light 
+propagation velocity of about 8.5~ps/mm in the LYSO bars.  
 
 \begin{table}
   \begin{center}  
@@ -112,19 +103,52 @@ configurable threshold.
       TDC least significant bit            & 20 ps \\
     \hline
     \end{tabular}
-    \caption{Parameters used in the BTL simulation: the values have been tuned on test beam and laboratory measurements.
+    \caption{Parameters used in the BTL simulation: the values have been tuned on 
+    test beam and laboratory measurements.
     \label{tab:sim_parameters}}
   \end{center}
 \end{table}
 
-Two time measurements are generated for the left and right SiPMs of a
-crystal, $t_{L,\,R}$, which are then independently fluctuated with a
-Gauss distribution using a global $\sigma$ that includes all the 
-contributions to the time resolution summed in quadrature according to
-Eq.~\ref{eq:btl_time_res} and Eq.~\ref{eq:sigma_phot}. 
+The feature of the BTL readout chip (TOFHIR) to provide two time measurements per 
+readout channel, either both on the leading edge or one on the leading edge and 
+another on the trailing edge of the signal, is implemented in the simulation via 
+a set of configurable parameters. The default configuration uses the lowest leading 
+edge threshold to digitize the time of arrival, and a time-walk correction using 
+the amplitude measurement. 
+% 
+\begin{figure}[tp]
+\centering
+\includegraphics[width=0.55\textwidth]{fig/performance/btl_pulse.pdf}
+\caption{Reference pulse, corresponding to a signal of 100 photoelectrons, at the 
+input of the discriminator of the TOFHIR chip. The pulse is rescaled to the actual 
+hit amplitude and the time $t^{TW}$ is read in correspondence with a thresholds $n^{thr}$.
+\label{fig:BTL_pulse}}
+\end{figure}
+A reference pulse shape of the TOFHIR signal at the input of the discriminator is 
+used to calculate the time-walk delay. The pulse shape is based on a detailed
+simulation of the TOFHIR chip based on the CADENCE software. The pulse amplitude 
+is normalized to the number of photoelectrons and the measured time is set by the 
+time when the pulse crosses a configurable threshold, as illustrated in
+Figure~\ref{fig:BTL_pulse}.
+
+Two time measurements are generated for the left and right SiPMs of a crystal, 
+$T^{L,\,R}$, which are then independently fluctuated with a Gauss distribution 
+using a global $\sigma$ that includes different contributions to the time 
+resolution summed in quadrature:
+\begin{itemize}
+\item photo-statistics, parameterized to the test beam results, such that $\sigma_{stat} = 48$ ps for 1 MIP 
+      ($\sim$8000 p.e.) with a $1/\sqrt{N_{\rm p.e.}}$ dependence on the signal amplitude;
+\item SiPM time resolution, parameterized as $\sigma_{SPTR} = SPTR/\sqrt{n^{thr}}$, 
+      where $SPTR$ is the SiPM single photon time resolution and $n^{thr}$ is the discriminator threshold;
+\item SiPM dark counts, given by $\sigma_{DCR} = \sqrt{DCR\, \tau_{E}}\:\tau_S/N_{\rm p.e.}$, where $DCR$ is the
+      SiPM dark count rate and $\tau_E$ and $\tau_S$ are the rise and decay times for LYSO crystals, respectively;
+\item electronic noise, parameterized as $\sigma_{noise} = \sigma_{el}\,\tau_S/N_{\rm p.e.}$, where $\sigma_{el}$
+      is the TOFHiR expected noise and $\tau_S$ is the the LYSO decay time;
+\item clock distribution: $\sigma_{clk} = 15$ ps.
+\end{itemize}
+
 Finally, the charge and time values are converted into integer numbers according to the TOFHIR specifications 
-a 10-bit ADC with a dynamic range of 600 pC (corresponding to 15.6 MeV) and a 10-bit TDC with a granularity of 20~ps
-(time saturation at 20.46 ns).
+of a 10-bit ADC with a dynamic range of 600 pC (corresponding to 15.6 MeV) and a 10-bit TDC with a granularity of 20~ps (time saturation at 20.46 ns).
 
 The occupancy is shown in Fig.~\ref{fig:channel_occupancy} (Section~\ref{BTLSec:Electronics}), the BTL crystal occupancy at 200 pileup events, estimated from this simulation, ranges between 6 and 8\%, for signals of amplitude higher than $E_{\text{thr}} = 1$~MeV (about 25\% of the MIP most probable energy deposition), corresponding to the BTL readout threshold. 
 At lower thresholds, the occupancy increases --- about 24\% for a threshold of 100~keV --- because of low energy hits, mostly due to out-of-time interactions originating from back-scattered particles from the ECAL. 

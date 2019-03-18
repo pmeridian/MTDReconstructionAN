@@ -56,8 +56,8 @@ the TDR.
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=0.52\textwidth]{fig/performance/purej/BDT_noTrackInfo/track_pu_vs_linden_nugun.pdf}
-\includegraphics[width=0.46\textwidth]{fig/performance/purej/fastSim/nPUTracks_fromGenLevel_tres_eta3p0_pt0p9_1.pdf}
+\includegraphics[width=0.48\textwidth]{fig/performance/purej/ForApproval/track_pu_vs_linden_nugun_nobdt.pdf}
+\includegraphics[width=0.48\textwidth]{fig/performance/purej/ForApproval/nputracks_fastsim.pdf}
  \caption{Left: Number of tracks from pileup incorrectly 
    associated with the hard primary vertex in \ttbar events from full
    simulation as a function of the pileup density, shown with (4D vtx)
@@ -68,13 +68,14 @@ the TDR.
 
 With fast-sim is possible to estimate the effect of the reduction of the track-MTD association efficiency, which is about 30\% for the efficiency which is currently achieved in the MTD full simulation and reconstruction. As we have discussed, there are margins to to improve the tracking algorithm and MTD association at PU200, with direct benefits to this figure of merit. 
 
-Fig.\ref{fig:trkvtx} (left) reports also the rejection which can be achieved using a multivariate classifier for the tracks. The multivariate classifier is trained on tracks from TTbar events at PU200, separating them in 2 species, primary vertex tracks and PU tracks. A boosted decision tree is trained using as inputs track quality input parameters (number of track hits, $\chi^2$, $p_{T}$, $\eta$), track-MTD matching variables ($\chi^2_{space}$,$\chi^2_{time}$), and the $\delta_{t}$ at vertex. The impact parameters of the track with respect to the vertex are not fed to the BDT to allow only selection on the timing information. The purpose of this classifier is to reject the residual fake-MTD track associations discussed in section~\ref{C5Sec:mtdreco} at PU200 when applying only a beam spot constraint, in order to reduce the over-cleaning for tracks belonging to the primary vertex. The effectiveness of this approach is shown in Fig.~\ref{fig:purej_eff}, which compares the efficiency for tracks matched to a primary vertex generator particle, as a function of $\pt$ and $\eta$. The efficiency loss from the straight $\delta_{t}<3\sigma_{t}$ cut is reduced by the BDT approach, which has a small efficiency loss compared to the $d_{z}$ cut, and a rejection comparable to the $\delta_{z}+\delta_{t}$ cut. 
+Fig.\ref{fig:purej_bdt} (left) reports also the rejection which can be achieved using a multivariate classifier for the tracks. The multivariate classifier is trained on tracks from TTbar events at PU200, separating them in 2 species, primary vertex tracks and PU tracks. A boosted decision tree is trained using as inputs track quality input parameters (number of track hits, $\chi^2$, $p_{T}$, $\eta$), track-MTD matching variables ($\chi^2_{space}$,$\chi^2_{time}$), and the $\delta_{t}$ at vertex. The impact parameters of the track with respect to the vertex are not fed to the BDT to allow only selection on the timing information. The purpose of this classifier is to reject the residual fake-MTD track associations discussed in section~\ref{C5Sec:mtdreco} at PU200 when applying only a beam spot constraint, in order to reduce the over-cleaning for tracks belonging to the primary vertex. The effectiveness of this approach is shown in Fig.~\ref{fig:purej_bdt}, which compares the efficiency for tracks matched to a primary vertex generator particle, as a function of $\pt$ and $\eta$. The efficiency loss from the straight $\delta_{t}<3\sigma_{t}$ cut is reduced by the BDT approach, which has a small efficiency loss compared to the $d_{z}$ cut, and a rejection comparable to the $\delta_{z}+\delta_{t}$ cut. 
 
 \begin{figure}[!phtb]
 \centering
 \includegraphics[width=0.48\textwidth]{fig/performance/purej/BDT_noTrackInfo/track_eff_vs_linden_ttbar.pdf}
- \caption{Primary vertex association efficiency as a function of the line-density for primary vertex gen-matched tracks with different association criteria: blue $|\delta_{z}|<1$~mm,  red $|\delta_{z}|<1$~mm and $|\delta_{t}|<3\sigma_{t}$, orange $|\delta_{z}|<1$~mm and $BDT_{MTD}<WP_{95}$.  }
-   \label{fig:purej_eff}
+\includegraphics[width=0.48\textwidth]{fig/performance/purej/BDT_noTrackInfo/track_pu_vs_linden_nugun.pdf}
+ \caption{Primary vertex association efficiency (left) and rejection (right) as a function of the line-density for primary vertex gen-matched tracks with different association criteria: blue $|\delta_{z}|<1$~mm,  red $|\delta_{z}|<1$~mm and $|\delta_{t}|<3\sigma_{t}$, orange $|\delta_{z}|<1$~mm and $BDT_{MTD}<WP_{95}$.  }
+   \label{fig:purej_bdt}
 \end{figure}
 
 Further improvements to this approach can be clearly obtained using also the impact parameters in the longitudinal direction and in the transverse direction in the training of the multivariate classifier, which will be able to fully exploit the correlations between the track quality, track-MTD matching and 4D track-vertex impact parameters. 
@@ -83,7 +84,7 @@ It is useful also to compare the pile-up rejection capabilities with different t
 
 \begin{figure}[!phtb]
 \centering
-\includegraphics[width=0.48\textwidth]{fig/performance/purej/fastSim/nPUTracks_fromGenLevel_tres_eta3p0_pt0p9_2.pdf}
+\includegraphics[width=0.48\textwidth]{fig/performance/purej/ForApproval/nputracks_fastsim_tres.pdf}
  \caption{Number of tracks from pileup incorrectly 
    associated with the hard primary vertex in \ttbar events from fast timing
    simulation as a function of the pileup density for different time resolutions.}
