@@ -46,3 +46,12 @@ The time resolution for events without pile-up is reported in \ref{fig:neu_tres}
 \caption{Reconstructed time for neutral particles in BTL confronted to the vertex time. (left) PU0 conditions, (right) PU200. Single photon events with $1<p_{T}<10$~GeV are used. Effective time resolution is 32ps for PU0 conditions and 35ps for PU200.}
 \label{fig:neu_tres}
 \end{figure}
+
+It is possible to estimate the effect of the neutral PU rejection in the barrel, considering all the neutrals energy deposits  with $E_T>1$~GeV with $|\eta|<1.5$ in a PU200 simulated events. Efficiency between 30\% and 55\% varying with $\eta$ is considered for the time assignment. The effect of rejecting for a fraction of the energy deposits with a $\delta_{t}^{vtx}>3\sigma$ can be estimated to be ~30\% as can be seen in Fig.~\ref{fig:sumet_neu_comp} 
+
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=0.48\textwidth]{fig/performance/neutrals/sumet_comp.pdf}
+\caption{Pile-up neutral energy deposits rejection using timing. Energy deposits with $E_T>1$~GeV in the barrel are considered in PU200 events. Time assignment efficiency is assumed to be varying with $\eta$ from 30\% to 55\%. Black is without any time requirement, Red is requiring time to be compatible within $3\sigma$ to the primary vertex time.}
+\label{fig:sumet_neu_comp}
+\end{figure}
